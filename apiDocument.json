@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "AdminController API",
+    "name": "eShift API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -103,6 +103,908 @@
           "host": ["localhost"],
           "port": "5000",
           "path": ["api", "Admin", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get All Assistants",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Assistant",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Assistant"]
+        }
+      }
+    },
+    {
+      "name": "Get Assistant by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Assistant/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Assistant", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Assistant",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assistantId\": 1,\n  \"username\": \"assistant1\",\n  \"passwordHash\": \"yourhash\",\n  \"fullName\": \"Assistant User\",\n  \"emailAddress\": \"assistant@example.com\",\n  \"addressLine\": \"456 Elm St\",\n  \"contactInfo\": \"0987654321\",\n  \"isActive\": true,\n  \"role\": \"ASSISTANT\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Assistant",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Assistant"]
+        }
+      }
+    },
+    {
+      "name": "Update Assistant",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assistantId\": 1,\n  \"username\": \"assistant1\",\n  \"passwordHash\": \"yourhash\",\n  \"fullName\": \"Assistant User\",\n  \"emailAddress\": \"assistant@example.com\",\n  \"addressLine\": \"456 Elm St\",\n  \"contactInfo\": \"0987654321\",\n  \"isActive\": true,\n  \"role\": \"ASSISTANT\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Assistant/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Assistant", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Assistant",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Assistant/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Assistant", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Branches",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Branch",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Branch"]
+        }
+      }
+    },
+    {
+      "name": "Get Branch by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Branch/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Branch", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Branch",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"branchId\": 1,\n  \"branchName\": \"Main Branch\",\n  \"location\": \"789 Pine St\",\n  \"contactNumber\": \"1122334455\",\n  \"managerId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Branch",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Branch"]
+        }
+      }
+    },
+    {
+      "name": "Update Branch",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"branchId\": 1,\n  \"branchName\": \"Main Branch Updated\",\n  \"location\": \"321 Oak St\",\n  \"contactNumber\": \"5544332211\",\n  \"managerId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Branch/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Branch", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Branch",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Branch/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Branch", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Cities",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/City",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "City"]
+        }
+      }
+    },
+    {
+      "name": "Get City by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/City/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "City", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create City",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cityId\": 1,\n  \"cityName\": \"New York\",\n  \"state\": \"NY\",\n  \"country\": \"USA\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/City",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "City"]
+        }
+      }
+    },
+    {
+      "name": "Update City",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cityId\": 1,\n  \"cityName\": \"New York Updated\",\n  \"state\": \"NY\",\n  \"country\": \"USA\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/City/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "City", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete City",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/City/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "City", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Containers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Container",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Container"]
+        }
+      }
+    },
+    {
+      "name": "Get Container by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Container/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Container", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Container",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"containerId\": 1,\n  \"containerType\": \"20ft\",\n  \"location\": \"Warehouse A\",\n  \"status\": \"Available\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Container",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Container"]
+        }
+      }
+    },
+    {
+      "name": "Update Container",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"containerId\": 1,\n  \"containerType\": \"40ft\",\n  \"location\": \"Warehouse B\",\n  \"status\": \"In Use\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Container/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Container", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Container",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Container/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Container", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Customers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Customer",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Customer"]
+        }
+      }
+    },
+    {
+      "name": "Get Customer by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Customer/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Customer", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"customerName\": \"John Doe\",\n  \"contactPerson\": \"Jane Doe\",\n  \"address\": \"123 Maple St\",\n  \"phone\": \"1231231234\",\n  \"email\": \"johndoe@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Customer",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Customer"]
+        }
+      }
+    },
+    {
+      "name": "Update Customer",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"customerName\": \"John Doe Updated\",\n  \"contactPerson\": \"Jane Doe\",\n  \"address\": \"321 Birch St\",\n  \"phone\": \"4324324321\",\n  \"email\": \"johndoeupdated@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Customer/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Customer", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Customer",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Customer/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Customer", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Drivers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Driver",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Driver"]
+        }
+      }
+    },
+    {
+      "name": "Get Driver by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Driver/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Driver", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Driver",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"driverId\": 1,\n  \"fullName\": \"Driver One\",\n  \"licenseNumber\": \"D1234567\",\n  \"vehicleType\": \"Truck\",\n  \"contactNumber\": \"9876543210\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Driver",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Driver"]
+        }
+      }
+    },
+    {
+      "name": "Update Driver",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"driverId\": 1,\n  \"fullName\": \"Driver One Updated\",\n  \"licenseNumber\": \"D7654321\",\n  \"vehicleType\": \"Van\",\n  \"contactNumber\": \"0123456789\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Driver/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Driver", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Driver",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Driver/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Driver", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Jobs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Job",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Job"]
+        }
+      }
+    },
+    {
+      "name": "Get Job by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Job/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Job", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Job",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": 1,\n  \"jobType\": \"Delivery\",\n  \"description\": \"Deliver goods to customer\",\n  \"status\": \"Pending\",\n  \"driverId\": 1,\n  \"vehicleId\": 1,\n  \"branchId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Job",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Job"]
+        }
+      }
+    },
+    {
+      "name": "Update Job",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": 1,\n  \"jobType\": \"Delivery Updated\",\n  \"description\": \"Deliver goods to customer - updated\",\n  \"status\": \"In Progress\",\n  \"driverId\": 1,\n  \"vehicleId\": 1,\n  \"branchId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Job/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Job", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Job",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Job/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Job", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Job Stops",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/JobStop",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "JobStop"]
+        }
+      }
+    },
+    {
+      "name": "Get Job Stop by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/JobStop/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "JobStop", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Job Stop",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobStopId\": 1,\n  \"jobId\": 1,\n  \"stopSequence\": 1,\n  \"location\": \"Customer Location\",\n  \"arrivalTime\": \"2023-10-10T10:00:00\",\n  \"departureTime\": \"2023-10-10T11:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/JobStop",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "JobStop"]
+        }
+      }
+    },
+    {
+      "name": "Update Job Stop",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobStopId\": 1,\n  \"jobId\": 1,\n  \"stopSequence\": 1,\n  \"location\": \"Customer Location Updated\",\n  \"arrivalTime\": \"2023-10-10T10:30:00\",\n  \"departureTime\": \"2023-10-10T11:30:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/JobStop/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "JobStop", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Job Stop",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/JobStop/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "JobStop", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Loads",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Load",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Load"]
+        }
+      }
+    },
+    {
+      "name": "Get Load by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Load/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Load", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Load",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"loadId\": 1,\n  \"loadType\": \"Full\",\n  \"description\": \"Full load of goods\",\n  \"status\": \"Pending\",\n  \"jobId\": 1,\n  \"containerId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Load",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Load"]
+        }
+      }
+    },
+    {
+      "name": "Update Load",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"loadId\": 1,\n  \"loadType\": \"Full Updated\",\n  \"description\": \"Full load of goods - updated\",\n  \"status\": \"In Progress\",\n  \"jobId\": 1,\n  \"containerId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Load/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Load", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Load",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Load/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Load", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Lorries",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Lorry",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Lorry"]
+        }
+      }
+    },
+    {
+      "name": "Get Lorry by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Lorry/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Lorry", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Lorry",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lorryId\": 1,\n  \"lorryNumber\": \"LRY1234\",\n  \"capacity\": 10000,\n  \"driverId\": 1,\n  \"status\": \"Available\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Lorry",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Lorry"]
+        }
+      }
+    },
+    {
+      "name": "Update Lorry",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lorryId\": 1,\n  \"lorryNumber\": \"LRY5678\",\n  \"capacity\": 12000,\n  \"driverId\": 1,\n  \"status\": \"In Use\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Lorry/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Lorry", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Lorry",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Lorry/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Lorry", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get All Trips",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Trip",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Trip"]
+        }
+      }
+    },
+    {
+      "name": "Get Trip by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Trip/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Trip", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Trip",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tripId\": 1,\n  \"tripCode\": \"TRIP1234\",\n  \"startLocation\": \"Warehouse A\",\n  \"endLocation\": \"Customer Location\",\n  \"departureTime\": \"2023-10-10T08:00:00\",\n  \"arrivalTime\": \"2023-10-10T10:00:00\",\n  \"status\": \"Scheduled\",\n  \"driverId\": 1,\n  \"lorryId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Trip",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Trip"]
+        }
+      }
+    },
+    {
+      "name": "Update Trip",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tripId\": 1,\n  \"tripCode\": \"TRIP5678\",\n  \"startLocation\": \"Warehouse B\",\n  \"endLocation\": \"Customer Location Updated\",\n  \"departureTime\": \"2023-10-10T09:00:00\",\n  \"arrivalTime\": \"2023-10-10T11:00:00\",\n  \"status\": \"In Progress\",\n  \"driverId\": 1,\n  \"lorryId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/Trip/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Trip", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Trip",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Trip/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Trip", "1"]
         }
       }
     }

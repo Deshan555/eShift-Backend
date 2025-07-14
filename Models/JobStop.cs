@@ -10,12 +10,10 @@ namespace eShift.Models
         [Key]
         public int StopId { get; set; }
 
-        // Foreign key to Job
         public int JobId { get; set; }
         [ForeignKey("JobId")]
         public Job? Job { get; set; }
 
-        // Foreign key to City
         public int CityId { get; set; }
         [ForeignKey("CityId")]
         public City? City { get; set; }
@@ -24,17 +22,12 @@ namespace eShift.Models
         public string Address { get; set; } = string.Empty;
 
         [Required]
-        public StopType StopType { get; set; } = StopType.START;
+        public string StopType { get; set; } = string.Empty;
 
         [Required]
         public int StopOrder { get; set; }
-    }
 
-    // Types of stops for a job
-    public enum StopType
-    {
-        START,
-        INTERMEDIATE,
-        DESTINATION
+        [Required]
+        public string JobStatus { get; set; } = string.Empty;
     }
 }

@@ -14,6 +14,43 @@ namespace eShift.Controllers
     [ApiController]
     public class TripController : ControllerBase
     {
+        public class AvailableResourcesRequest
+        {
+            public DateTime Date { get; set; }
+        }
+
+        [HttpPost("available-resources")]
+        public async Task<ActionResult<ApiResponse<object>>> GetAvailableResources([FromBody] AvailableResourcesRequest request)
+        {
+            // Get all trips scheduled for the given date
+            var tripsOnDate = await _context.Trips.Where(t => t.ScheduledDate.Date == request.Date.Date).ToListAsync();
+
+            // Get IDs of resources already assigned on that date
+            var assignedDriverIds = tripsOnDate.Select(t => t.DriverId).ToHashSet();
+            var assignedLorryIds = tripsOnDate.Select(t => t.LorryId).ToHashSet();
+            var assignedContainerIds = tripsOnDate.Select(t => t.ContainerId).ToHashSet();
+
+            // Get available resources
+            var availableDrivers = await _context.Drivers.Where(d => !assignedDriverIds.Contains(d.DriverId) && (d.WorkingStatus == null || d.WorkingStatus.ToLower() == "active")).ToListAsync();
+            var availableLorries = await _context.Lorries.Where(l => !assignedLorryIds.Contains(l.LorryId) && l.Status.ToLower() == "available").ToListAsync();
+            var availableContainers = await _context.Containers.Where(c => !assignedContainerIds.Contains(c.ContainerId)).ToListAsync();
+
+            var traceId = GetTraceId();
+            var result = new
+            {
+                Drivers = availableDrivers,
+                Lorries = availableLorries,
+                Containers = availableContainers
+            };
+            _logger.LogInformation("Fetched available resources for date: {Date}, TraceId: {TraceId}", request.Date, traceId);
+            return Ok(new ApiResponse<object>
+            {
+                Status = StatusCodes.Status200OK,
+                Message = "Available resources fetched successfully.",
+                TraceId = traceId,
+                Data = result
+            });
+        }
         private readonly EShiftDbContext _context;
         private readonly ILogger<TripController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;

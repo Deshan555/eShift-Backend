@@ -19,5 +19,14 @@ namespace eShift.Models
 
         [Required, StringLength(100)]
         public string ContactInfo { get; set; } = string.Empty;
+
+        [StringLength(100)]
+        public string? SecondaryPhone { get; set; }
+
+        [Required, StringLength(100)]
+        public string Email { get; set; } = string.Empty;
+
+        [StringLength(100)]
+        public string? Pronouns { get; set; }
     }
 }

@@ -4,15 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eShift.Models
 {
-    // Status for a job
-    public enum JobStatus
-    {
-        PENDING,
-        IN_PROGRESS,
-        COMPLETED
-    }
-
-    // Represents a job
     [Table("Job")]
     public class Job
     {
@@ -33,6 +24,36 @@ namespace eShift.Models
         public DateTime Date { get; set; }
 
         [Required]
-        public JobStatus Status { get; set; } = JobStatus.PENDING;
+        public string Status { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(50)]
+        public string RequestStatus { get; set; } = string.Empty;
+
+        [Required]
+        public DateTime? DeliveryDate { get; set; }
+
+        [StringLength(500)]
+        public string? SpecialRemark { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string RequestContainerType { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(50)]
+        public string AdminApprovalStatus { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(50)]
+        public string InvoicingStatus { get; set; } = string.Empty;
+
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal InvoicePrice { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string PaymentStatus { get; set; } = string.Empty;
     }
 }

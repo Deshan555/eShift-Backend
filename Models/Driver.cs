@@ -9,7 +9,6 @@ namespace eShift.Models
         [Key]
         public int DriverId { get; set; }
 
-        // Foreign key to Branch
         public int BranchId { get; set; }
         [ForeignKey("BranchId")]
         public Branch? Branch { get; set; }
@@ -22,5 +21,22 @@ namespace eShift.Models
 
         [Required, StringLength(100)]
         public string ContactInfo { get; set; } = string.Empty;
+
+        [StringLength(20)]
+        public string? NIC { get; set; }
+
+        [StringLength(20)]
+        public string? PhoneNumber { get; set; }
+
+        [StringLength(50)]
+        public string? LicenseType { get; set; }
+
+        public DateTime? LicenseExpiryDate { get; set; }
+
+        [StringLength(255)]
+        public string? Address { get; set; }
+
+        [StringLength(50)]
+        public string? WorkingStatus { get; set; }
     }
 }

@@ -13,6 +13,18 @@ namespace eShift.Models
         [Required, StringLength(100)]
         public string Name { get; set; } = string.Empty;
 
+        [Required, StringLength(100)]
+        public string PostalCode { get; set; } = string.Empty;
+
+        [Required, StringLength(100)]
+        public string District { get; set; } = string.Empty;
+
+        [Required, Column(TypeName = "decimal(9,6)")]
+        public decimal Latitude { get; set; }
+
+        [Required, Column(TypeName = "decimal(9,6)")]
+        public decimal Longitude { get; set; }
+
         [StringLength(100)]
         public string? State { get; set; }
 

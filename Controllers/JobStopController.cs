@@ -106,5 +106,25 @@ namespace eShift.Controllers
             _logger.LogInformation("JobStop deleted. Id: {Id}, TraceId: {TraceId}", id, traceId);
             return Ok(new ApiResponse<JobStop> { Status = StatusCodes.Status200OK, Message = "JobStop deleted successfully.", TraceId = traceId, Data = entity });
         }
+
+[HttpGet("by-job/{jobId}")]
+public async Task<ActionResult<ApiResponse<IEnumerable<JobStop>>>> GetByJobId(int jobId)
+{
+    var data = await _context.JobStops
+        .Include(js => js.City)
+        .Where(js => js.JobId == jobId)
+        .ToListAsync();
+    var traceId = GetTraceId();
+    _logger.LogInformation("Fetched JobStops for JobId: {JobId}, TraceId: {TraceId}", jobId, traceId);
+    return Ok(new ApiResponse<IEnumerable<JobStop>>
+    {
+        Status = StatusCodes.Status200OK,
+        Message = data.Count == 0 ? "No JobStops found for the given JobId." : "JobStops fetched successfully.",
+        TraceId = traceId,
+        Data = data
+    });
+}
+
+
     }
 }

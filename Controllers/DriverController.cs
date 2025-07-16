@@ -101,10 +101,27 @@ namespace eShift.Controllers
                 _logger.LogWarning("Driver not found for delete. Id: {Id}, TraceId: {TraceId}", id, traceId);
                 return NotFound(new ApiResponse<Driver> { Status = StatusCodes.Status404NotFound, Message = "Driver not found.", TraceId = traceId, Data = null });
             }
-            _context.Drivers.Remove(entity);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("Driver deleted. Id: {Id}, TraceId: {TraceId}", id, traceId);
-            return Ok(new ApiResponse<Driver> { Status = StatusCodes.Status200OK, Message = "Driver deleted successfully.", TraceId = traceId, Data = entity });
+            if (entity.WorkingStatus == null || entity.WorkingStatus.ToLower() == "active")
+            {
+                entity.WorkingStatus = "Inactive";
+                _context.Drivers.Update(entity);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation("Driver set to inactive. Id: {Id}, TraceId: {TraceId}", id, traceId);
+                return Ok(new ApiResponse<Driver> { Status = StatusCodes.Status200OK, Message = "Driver set to inactive successfully.", TraceId = traceId, Data = entity });
+            }
+            else if (entity.WorkingStatus.ToLower() == "inactive")
+            {
+                entity.WorkingStatus = "Active";
+                _context.Drivers.Update(entity);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation("Driver set to active. Id: {Id}, TraceId: {TraceId}", id, traceId);
+                return Ok(new ApiResponse<Driver> { Status = StatusCodes.Status200OK, Message = "Driver set to active successfully.", TraceId = traceId, Data = entity });
+            }
+            else
+            {
+                _logger.LogInformation("Driver WorkingStatus unrecognized. Id: {Id}, TraceId: {TraceId}", id, traceId);
+                return Ok(new ApiResponse<Driver> { Status = StatusCodes.Status200OK, Message = "Driver WorkingStatus unrecognized.", TraceId = traceId, Data = entity });
+            }
         }
     }
 }

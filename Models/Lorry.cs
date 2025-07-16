@@ -22,5 +22,20 @@ namespace eShift.Models
 
         [Required, StringLength(20)]
         public string Status { get; set; } = "available";
+
+        [StringLength(100)]
+        public string? VehicleModel { get; set; }
+
+        [StringLength(50)]
+        public string? VehicleColor { get; set; }
+
+        [StringLength(100)]
+        public string? InsuranceNumber { get; set; }
+
+        public DateTime? InsuranceExpiryDate { get; set; }
+        [StringLength(100)]
+
+        public string? TransportCompany { get; set; }
+
     }
 }

@@ -13,19 +13,19 @@ namespace eShift.Models
         [ForeignKey("JobId")]
         public Job? Job { get; set; }
 
-        public int LorryId { get; set; }
+        public int? LorryId { get; set; }
         [ForeignKey("LorryId")]
         public Lorry? Lorry { get; set; }
 
-        public int DriverId { get; set; }
+        public int? DriverId { get; set; }
         [ForeignKey("DriverId")]
         public Driver? Driver { get; set; }
 
-        public int AssistantId { get; set; }
+        public int? AssistantId { get; set; }
         [ForeignKey("AssistantId")]
         public Assistant? Assistant { get; set; }
 
-        public int ContainerId { get; set; }
+        public int? ContainerId { get; set; }
         [ForeignKey("ContainerId")]
         public Container? Container { get; set; }
 

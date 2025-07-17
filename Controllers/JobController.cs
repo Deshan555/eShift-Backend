@@ -61,9 +61,36 @@ namespace eShift.Controllers
         {
             _context.Jobs.Add(entity);
             await _context.SaveChangesAsync();
+
+            var trip = new Trip
+            {
+                JobId = entity.JobId,
+                ScheduledDate = entity.Date,
+                Status = "PENDING",
+                LorryId = null,
+                DriverId = null,
+                AssistantId = null,
+                ContainerId = null
+            };
+            _context.Trips.Add(trip);
+            await _context.SaveChangesAsync();
+
+            var load = new Load
+            {
+                JobId = entity.JobId,
+                TripId = trip.TripId,
+                Description = "Auto-generated load for job " + entity.JobId,
+                Weight = 0,
+                Volume = 0,
+                MeaterReadingStart = 0,
+                MeaterReadingEnd = 0
+            };
+            _context.Loads.Add(load);
+            await _context.SaveChangesAsync();
+
             var traceId = GetTraceId();
-            _logger.LogInformation("Job created. Id: {Id}, TraceId: {TraceId}", entity.JobId, traceId);
-            var response = new ApiResponse<Job> { Status = StatusCodes.Status201Created, Message = "Job created successfully.", TraceId = traceId, Data = entity };
+            _logger.LogInformation("Job, Trip, and Load created. JobId: {JobId}, TripId: {TripId}, LoadId: {LoadId}, TraceId: {TraceId}", entity.JobId, trip.TripId, load.LoadId, traceId);
+            var response = new ApiResponse<Job> { Status = StatusCodes.Status201Created, Message = "Job, Trip, and Load created successfully.", TraceId = traceId, Data = entity };
             return CreatedAtAction(nameof(Get), new { id = entity.JobId }, response);
         }
 
@@ -105,6 +132,70 @@ namespace eShift.Controllers
             await _context.SaveChangesAsync();
             _logger.LogInformation("Job deleted. Id: {Id}, TraceId: {TraceId}", id, traceId);
             return Ok(new ApiResponse<Job> { Status = StatusCodes.Status200OK, Message = "Job deleted successfully.", TraceId = traceId, Data = entity });
+        }
+
+        [HttpGet("details/{jobId}")]
+        public async Task<ActionResult<ApiResponse<object>>> GetJobFullDetails(int jobId)
+        {
+            var job = await _context.Jobs.FindAsync(jobId);
+            if (job == null)
+            {
+                var traceId = GetTraceId();
+                _logger.LogWarning("Job not found for details. Id: {Id}, TraceId: {TraceId}", jobId, traceId);
+                return NotFound(new ApiResponse<object> { Status = StatusCodes.Status404NotFound, Message = "Job not found.", TraceId = traceId, Data = null });
+            }
+
+            var jobStops = await _context.JobStops.Where(js => js.JobId == jobId).ToListAsync();
+            var trip = await _context.Trips.FirstOrDefaultAsync(t => t.JobId == jobId);
+            var load = await _context.Loads.FirstOrDefaultAsync(l => l.JobId == jobId);
+            var customer = await _context.Customers.FindAsync(job.CustomerId);
+
+            var traceIdDetails = GetTraceId();
+            var result = new
+            {
+                Job = job,
+                JobStops = jobStops,
+                Trip = trip,
+                Load = load,
+                Customer = customer
+            };
+            _logger.LogInformation("Fetched job details for Id: {Id}, TraceId: {TraceId}", jobId, traceIdDetails);
+            return Ok(new ApiResponse<object>
+            {
+                Status = StatusCodes.Status200OK,
+                Message = "Job details fetched successfully.",
+                TraceId = traceIdDetails,
+                Data = result
+            });
+        }
+
+        [HttpGet("by-user/{userId}")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<Job>>>> GetJobsByUserId(int userId)
+        {
+            var traceId = GetTraceId();
+            // Assuming CustomerId is the user id; adjust property if your model differs
+            var jobs = await _context.Jobs.Where(j => j.CustomerId == userId).ToListAsync();
+
+            if (jobs == null || jobs.Count == 0)
+            {
+                _logger.LogWarning("No jobs found for user. UserId: {UserId}, TraceId: {TraceId}", userId, traceId);
+                return NotFound(new ApiResponse<IEnumerable<Job>>
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Message = "No jobs found for the given user.",
+                    TraceId = traceId,
+                    Data = null
+                });
+            }
+
+            _logger.LogInformation("Fetched jobs for user. UserId: {UserId}, TraceId: {TraceId}", userId, traceId);
+            return Ok(new ApiResponse<IEnumerable<Job>>
+            {
+                Status = StatusCodes.Status200OK,
+                Message = "Jobs fetched successfully.",
+                TraceId = traceId,
+                Data = jobs
+            });
         }
     }
 }

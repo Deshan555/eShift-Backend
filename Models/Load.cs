@@ -27,5 +27,9 @@ namespace eShift.Models
         [Required]
         [Column(TypeName = "decimal(10,2)")]
         public decimal Volume { get; set; }
+
+        public decimal MeaterReadingStart { get; set; }
+        public decimal MeaterReadingEnd { get; set; }
+        
     }
 }

@@ -19,6 +19,76 @@
       }
     },
     {
+      "name": "Dashboard Summary",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/summary",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "summary"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Jobs By Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/jobs-by-status",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "jobs-by-status"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Jobs By Branch",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/jobs-by-branch",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "jobs-by-branch"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Jobs Per Day",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/jobs-per-day",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "jobs-per-day"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Resource Utilization",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/resource-utilization",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "resource-utilization"]
+        }
+      }
+    },
+    {
       "name": "Get Admin by ID",
       "request": {
         "method": "GET",
@@ -33,76 +103,72 @@
       }
     },
     {
-      "name": "Create Admin",
+      "name": "Dashboard Summary",
       "request": {
-        "method": "POST",
-        "header": [
-          { "key": "Content-Type", "value": "application/json" }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"username\": \"admin1\",\n  \"passwordHash\": \"yourhash\",\n  \"fullName\": \"Admin User\",\n  \"emailAddress\": \"admin@example.com\",\n  \"addressLine\": \"123 Main St\",\n  \"contactInfo\": \"1234567890\",\n  \"isActive\": true,\n  \"role\": \"BRANCH_ADMIN\"\n}"
-        },
-        "url": {
-          "raw": "http://localhost:5000/api/Admin",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "Admin"]
-        }
-      }
-    },
-    {
-      "name": "Update Admin",
-      "request": {
-        "method": "PUT",
-        "header": [
-          { "key": "Content-Type", "value": "application/json" }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"adminId\": 1,\n  \"username\": \"admin1\",\n  \"passwordHash\": \"yourhash\",\n  \"fullName\": \"Admin User\",\n  \"emailAddress\": \"admin@example.com\",\n  \"addressLine\": \"123 Main St\",\n  \"contactInfo\": \"1234567890\",\n  \"isActive\": true,\n  \"role\": \"BRANCH_ADMIN\"\n}"
-        },
-        "url": {
-          "raw": "http://localhost:5000/api/Admin/1",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "Admin", "1"]
-        }
-      }
-    },
-    {
-      "name": "Delete Admin",
-      "request": {
-        "method": "DELETE",
+        "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:5000/api/Admin/1",
+          "raw": "http://localhost:5000/api/Dashboard/summary",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "Admin", "1"]
+          "path": ["api", "Dashboard", "summary"]
         }
       }
     },
     {
-      "name": "Admin Login",
+      "name": "Dashboard Jobs By Status",
       "request": {
-        "method": "POST",
-        "header": [
-          { "key": "Content-Type", "value": "application/json" }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"username\": \"admin1\",\n  \"passwordHash\": \"yourhash\"\n}"
-        },
+        "method": "GET",
+        "header": [],
         "url": {
-          "raw": "http://localhost:5000/api/Admin/login",
+          "raw": "http://localhost:5000/api/Dashboard/jobs-by-status",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "Admin", "login"]
+          "path": ["api", "Dashboard", "jobs-by-status"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Jobs By Branch",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/jobs-by-branch",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "jobs-by-branch"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Jobs Per Day",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/jobs-per-day",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "jobs-per-day"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Resource Utilization",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/Dashboard/resource-utilization",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "Dashboard", "resource-utilization"]
         }
       }
     },
@@ -940,20 +1006,7 @@
         }
       }
     },
-    {
-      "name": "Get Trip by ID",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:5000/api/Trip/1",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "Trip", "1"]
-        }
-      }
-    },
+    
     {
       "name": "Create Trip",
       "request": {

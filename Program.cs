@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
+builder.Services.AddScoped<Microsoft.AspNetCore.Identity.IPasswordHasher<eShift.Models.Customer>, Microsoft.AspNetCore.Identity.PasswordHasher<eShift.Models.Customer>>();
 builder.Services.AddDbContext<eShift.Data.EShiftDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),

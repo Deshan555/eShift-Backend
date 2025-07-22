@@ -27,5 +27,8 @@ namespace eShift.Models
 
         [Required, StringLength(100)]
         public string Password { get; set; } = string.Empty;
+
+        [Required, StringLength(100)]
+        public string ActiveStatus { get; set; } = string.Empty;
     }
 }
